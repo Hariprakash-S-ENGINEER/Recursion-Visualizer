@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursion Visualizer — Factorial</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">A tiny computer science visualizer</p>
+      <h1>How does <span>recursion</span> work?</h1>
+      <p class="intro">Let's find <strong>3!</strong> (3 factorial) by letting a function call itself.</p>
+    </header>
+
+    <section class="lesson">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE IDEA</p>
+          <h2>A function solving a smaller version of the same problem</h2>
+        </div>
+        <span class="tag">Example: factorial(3)</span>
+      </div>
+
+      <div class="equation">
+        <span>factorial(3)</span><span class="equals">=</span><span>3 × 2 × 1</span><span class="equals">=</span><strong>6</strong>
+      </div>
+
+      <div class="animation-area">
+        <div class="phase-label"><span class="pulse"></span> WATCH THE CALL STACK</div>
+        <div class="stack" aria-label="Animated recursion call stack">
+          <div class="stack-card card-3">
+            <span class="call-number">CALL 1</span>
+            <strong>factorial(3)</strong>
+            <small>3 × factorial(2)</small>
+            <span class="status">waiting…</span>
+          </div>
+          <div class="stack-card card-2">
+            <span class="call-number">CALL 2</span>
+            <strong>factorial(2)</strong>
+            <small>2 × factorial(1)</small>
+            <span class="status">waiting…</span>
+          </div>
+          <div class="stack-card card-1">
+            <span class="call-number">CALL 3</span>
+            <strong>factorial(1)</strong>
+            <small>Base case: return 1</small>
+            <span class="status">base case!</span>
+          </div>
+          <div class="return-card return-2">
+            <span>RETURN</span><strong>2 × 1 = 2</strong>
+          </div>
+          <div class="return-card return-3">
+            <span>RETURN</span><strong>3 × 2 = 6</strong>
+          </div>
+        </div>
+        <div class="timeline">
+          <span>Calls go down ↓</span>
+          <span class="timeline-line"></span>
+          <span>Answers come back ↑</span>
+        </div>
+      </div>
+
+      <div class="explain-grid">
+        <article class="explain-card">
+          <span class="step-icon">1</span>
+          <h3>Call itself</h3>
+          <p><code>factorial(3)</code> asks for <code>factorial(2)</code>. Then 2 asks for 1.</p>
+        </article>
+        <article class="explain-card">
+          <span class="step-icon">2</span>
+          <h3>Stop condition</h3>
+          <p><code>factorial(1)</code> reaches the base case and returns <strong>1</strong>.</p>
+        </article>
+        <article class="explain-card">
+          <span class="step-icon">3</span>
+          <h3>Return answers</h3>
+          <p>The waiting calls finish: <strong>2 × 1 = 2</strong>, then <strong>3 × 2 = 6</strong>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="code-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE CODE</p>
+          <h2>Just a few lines</h2>
+        </div>
+        <span class="tag">JavaScript-style pseudocode</span>
+      </div>
+      <pre><code><span class="keyword">function</span> factorial(n) {
+  <span class="keyword">if</span> (n === 1) {
+    <span class="keyword">return</span> 1;       <span class="comment">// base case</span>
+  }
+
+  <span class="keyword">return</span> n * factorial(n - 1); <span class="comment">// recursive call</span>
+}
+
+factorial(3); <span class="comment">// result: 6</span></code></pre>
+    </section>
+
+    <footer>
+      <strong>Remember:</strong> Recursion needs a <em>base case</em> to stop, and each call should move closer to it.
+      <p>Made for learning • CSE journey, Level 1</p>
+    </footer>
+  </main>
+</body>
+</html>
